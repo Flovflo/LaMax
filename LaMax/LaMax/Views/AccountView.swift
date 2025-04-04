@@ -44,13 +44,36 @@ struct AccountView: View {
                         animateProfile = true
                     }
                     
-                    // Statistiques du profil
+                    // Statistiques du profil existantes
                     HStack(spacing: 32) {
                         StatView(icon: "star.fill", title: "Points", value: "1200", color: .yellow)
                         StatView(icon: "flame.fill", title: "Niveau", value: "5", color: .red)
                         StatView(icon: "rosette", title: "Badges", value: "8", color: .purple)
                     }
                     .padding(.vertical)
+                    
+                    // Nouvelle section : Classement dans la division et objectifs mensuels
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Classement dans la division")
+                            .font(.headline)
+                        HStack {
+                            Text("Division : Elite")
+                            Spacer()
+                            Text("Classement : 3ème")
+                        }
+                        
+                        Text("Objectifs du mois")
+                            .font(.headline)
+                        HStack {
+                            Text("Quiz mensuel :")
+                            ProgressView(value: 0.7)
+                        }
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.orange.opacity(0.1))
+                    )
                     
                     // Boutons d'action
                     HStack(spacing: 20) {
