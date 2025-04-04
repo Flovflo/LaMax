@@ -1,3 +1,4 @@
 # LaMax
 
-![Simulator Screenshot - iPhone 16 Pro Max - 2025-04-04 at 10 08 31 Large](https://github.com/user-attachments/assets/bbb9ff07-5e88-4a46-9398-8ca05530c05b)
+
+<img width="568" alt="Screenshot 2025-04-04 at 7 07 23 PM" src="https://github.com/user-attachments/assets/2fea76d6-851d-4ed0-ab9f-7fb40fc3cd56" />
