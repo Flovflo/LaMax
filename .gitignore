@@ -60,3 +60,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+LaMax/LaMax/.DS_Store
+LaMax/.DS_Store
+LaMax/LaMax/Assets.xcassets/.DS_Store

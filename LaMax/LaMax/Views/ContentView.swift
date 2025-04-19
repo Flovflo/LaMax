@@ -1,47 +1,46 @@
 //
 //  ContentView.swift
-//  LaMax
+//  La_Max-W
 //
-//  Created by Florian Taffin on 04/04/2025.
+//  Created by Florian Taffin on 19/04/2025.
 //
 
 import SwiftUI
 
+import SwiftUI
+
+enum AppScreen {
+    case onboarding
+    case home
+    case quiz(partName: String)
+    case flashcards
+    case chatbot
+}
+
 struct ContentView: View {
+    @State private var screen: AppScreen = .onboarding
     var body: some View {
-        TabView {
-            // Onglet Accueil
-            NavigationStack {
-                HomeView()
-                    .navigationTitle("Accueil")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
-                    .toolbarColorScheme(.light, for: .navigationBar)
-            }
-            .tabItem {
-                Label("Accueil", systemImage: "house.fill")
-            }
-            
-            // Onglet Compte
-            NavigationStack {
-                AccountView()
-                    .navigationTitle("Mon Compte")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
-                    .toolbarColorScheme(.light, for: .navigationBar)
-            }
-            .tabItem {
-                Label("Compte", systemImage: "person.crop.circle")
+        NavigationStack {
+            switch screen {
+            case .onboarding:
+                OnboardingView(onContinue: { screen = .home })
+            case .home:
+                HomeScreen(
+    onStartQuiz: { part in screen = .quiz(partName: part) },
+    onShowFlashcards: { screen = .flashcards },
+    onChat: { screen = .chatbot }
+)
+            case .quiz(let partName):
+                QuizView(viewModel: QuizViewModel(partName: partName), onQuit: { screen = .home })
+            case .flashcards:
+                FlashcardView(viewModel: SpacedRepetitionViewModel(), onBack: { screen = .home })
+            case .chatbot:
+                ChatBotView(onBack: { screen = .home })
             }
         }
-        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.3), value: UUID())
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

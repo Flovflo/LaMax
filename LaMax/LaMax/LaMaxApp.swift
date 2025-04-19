@@ -1,8 +1,8 @@
 //
-//  LaMaxApp.swift
-//  LaMax
+//  La_Max_WApp.swift
+//  La_Max
 //
-//  Created by Florian Taffin on 04/04/2025.
+//  Created by Florian Taffin on 19/04/2025.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct LaMaxApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VisionHomeView()
         }
     }
 }
